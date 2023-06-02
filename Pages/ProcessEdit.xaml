@@ -1,0 +1,96 @@
+﻿<Page x:Class="WpfEDSS.Pages.ProcessEdit"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfEDSS.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="900" d:DesignWidth="1920"
+      Title="ProcessEdit">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Text="Название процесса"
+                   Grid.Column="0"
+                   Grid.Row="0"
+                   FontSize="28"/>
+        <TextBox x:Name="idTextBox"
+                 Grid.Column="1"
+                 Grid.Row="0"
+                 FontSize="28"/>
+        
+        <TextBlock Text="Комментарий"
+                   Grid.Column="0"
+                   Grid.Row="1"
+                   FontSize="28"/>
+        <TextBox x:Name="idCommentTextBox"
+                 Grid.Column="1"
+                 Grid.Row="1"
+                 FontSize="28"/>
+
+        <TextBlock Text="QR-Код"
+                   Grid.Column="0"
+                   Grid.Row="2"
+                   FontSize="28"/>
+        <TextBox x:Name="idQrCodeTextBox"
+                 Grid.Column="1"
+                 Grid.Row="2"
+                 FontSize="28"/>
+
+        <TextBlock Text="Сотрудник"
+                   Grid.Column="0"
+                   Grid.Row="3"
+                   FontSize="28"/>
+        <TextBox x:Name="idUserTextBox"
+                 Grid.Column="1"
+                 Grid.Row="3"
+                 FontSize="28"/>
+
+        <TextBlock Text="Отчет"
+                   Grid.Column="0"
+                   Grid.Row="4"
+                   FontSize="28"/>
+        <TextBox x:Name="idReportTextBox"
+                 Grid.Column="1"
+                 Grid.Row="4"
+                 FontSize="28"/>
+
+        <TextBlock Text="Клиент"
+                   Grid.Column="0"
+                   Grid.Row="5"
+                   FontSize="28"/>
+        <TextBox x:Name="idClientTextBox"
+                 Grid.Column="1"
+                 Grid.Row="5"
+                 FontSize="28"/>
+
+        <StackPanel Grid.Row="6"
+                    Grid.ColumnSpan="2"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    >
+            <Button x:Name="BtnProcessAdd"
+                    Click="BtnProcessAdd_Click"
+                    Content="Добавить" FontSize="28"
+                    Width="200"/>
+            <Button x:Name="BtnProcessDel"
+                    Click="BtnProcessDel_Click"
+                    Content="Удалить" FontSize="28"
+                    Width="200" Cursor=""/>
+        </StackPanel>
+        
+    </Grid>
+</Page>

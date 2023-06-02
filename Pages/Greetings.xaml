@@ -1,0 +1,43 @@
+﻿<Page x:Class="WpfEDSS.Pages.Greetings"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfEDSS.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="900" d:DesignWidth="1920"
+      Title="Greetings">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label
+               Grid.Row="2"
+               Grid.Column="1"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               FontSize="28"
+               Content ="Добро пожаловать!"/>
+        <Button Grid.Column="1"
+                Grid.Row="3"
+                x:Name="BtnGreetingsForward"
+                Click="BtnGreetingsForward_Click"
+                >Продолжить</Button>
+        <Button Grid.Column="1"
+                Grid.Row="4"
+                x:Name="BtnGreetingsHelp"
+                Click="BtnGreetingsHelp_Click"
+                >Справка</Button>
+        
+    </Grid>
+</Page>
