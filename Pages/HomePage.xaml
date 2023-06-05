@@ -10,12 +10,13 @@
 
     <Grid>
         <StackPanel>
-        <TextBlock Text="Список процессов(id.id_comment.id_qr_code.id_user.id_report.id_client)"/>
+        <TextBlock Text="Список процессов (id.id_comment.id_qr_code.id_user.id_report.id_client)"/>
+            <TextBox Width="600" Height="40" HorizontalAlignment="Left" Text="Поиск" FontSize="28" Foreground="Gray"/>
             <ListView x:Name="listOfProcesses" Margin="10">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <WrapPanel>
-                            <TextBlock Text="{Binding id}"/>
+                            <TextBlock Text="{Binding id_process}"/>
                             <TextBlock Text="{Binding id_comment}"/>
                             <TextBlock Text="{Binding id_qr_code}"/>
                             <TextBlock Text="{Binding id_user}"/>

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfEDSS.Classes;
 
 namespace WpfEDSS.Pages
 {
@@ -20,9 +21,27 @@ namespace WpfEDSS.Pages
     /// </summary>
     public partial class WorkersPage : Page
     {
+        readonly UIManager UIManager = new UIManager();
+        Classes.AppContext db;
         public WorkersPage()
         {
             InitializeComponent();
+            UIManager.Enable();
+            db = new Classes.AppContext();
+
+            List<Classes.User> Users = db.Users.ToList();
+
+            listOfWorkers.ItemsSource = Users;
+        }
+
+        private void btnEditWorker_Click(object sender, RoutedEventArgs e)
+        {
+            // Получаем выбранного сотрудника из списка сотрудников
+            Classes.User selectedUser = (sender as System.Windows.Controls.Button).DataContext as Classes.User;
+            // Создаем экземпляр страницы редактирования сотрудников и передаем данные выбранного сотдрудника
+            WorkerEdit editUserPage = new WorkerEdit(selectedUser);
+            // Открываем страницу редактирования процессов
+            NavigationService.Navigate(editUserPage);
         }
     }
 }

@@ -22,7 +22,6 @@ namespace WpfEDSS.Pages
             UIManager.Enable();
             db = new Classes.AppContext();
 
-            
             List<Classes.Process> Processes = db.Processes.ToList();
 
             listOfProcesses.ItemsSource = Processes;

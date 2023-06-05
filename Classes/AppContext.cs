@@ -6,6 +6,7 @@ namespace WpfEDSS.Classes
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Process> Processes { get; set; }
+        public DbSet<Client> Clients { get; set; }
         /*
         public DbSet<QR_code> QR_Codes { get; set; }
         public DbSet<Comment> Comments { get; set; }

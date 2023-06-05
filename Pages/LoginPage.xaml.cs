@@ -18,26 +18,31 @@ namespace WpfEDSS.Pages
             InitializeComponent();
 
             db = new Classes.AppContext();
+            UserSessionStats.status = 1; //regularuser for default
         }
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             string id_jobtitle = loginTextBox.Text.Trim();
-            string FIO = passwordBox.Password.Trim();
+            string fio_user = passwordBox.Password.Trim();
 
 
 
             Classes.User authUser = null;
             using (Classes.AppContext db = new Classes.AppContext())
             {
-                authUser = db.Users.Where(b => b.Id_jobtitle == id_jobtitle && b.Fio == FIO).FirstOrDefault();
+                authUser = db.Users.Where(b => b.Id_jobtitle == id_jobtitle && b.Fio_user == fio_user).FirstOrDefault();
             }
             if (authUser != null)
             {
-                //System.Windows.MessageBox.Show("Все хорошо!");
+                if (id_jobtitle == "admin") { 
+                    UserSessionStats.status = 0; //become admin
+                }
+                
                 Classes.ClassManager.frameMain.Navigate(new Pages.HomePage());
             }
             else
             {
+                UserSessionStats.status = 1; //deadmin
                 System.Windows.MessageBox.Show("Что-то введено не корректно!");
             }
         }

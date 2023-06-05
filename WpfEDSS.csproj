@@ -84,6 +84,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\ClientEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\ClientsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -104,6 +108,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\WorkerEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\WorkersPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -119,6 +127,7 @@
     <Compile Include="Classes\AppContext.cs" />
     <Compile Include="Classes\ClassContext.cs" />
     <Compile Include="Classes\ClassManager.cs" />
+    <Compile Include="Classes\Client.cs" />
     <Compile Include="Classes\Comment.cs" />
     <Compile Include="Classes\Jobtitle.cs" />
     <Compile Include="Classes\Process.cs" />
@@ -127,6 +136,10 @@
     <Compile Include="Classes\Role.cs" />
     <Compile Include="Classes\UIManager.cs" />
     <Compile Include="Classes\User.cs" />
+    <Compile Include="Classes\UserSessionStats.cs" />
+    <Compile Include="Pages\ClientEdit.xaml.cs">
+      <DependentUpon>ClientEdit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ClientsPage.xaml.cs">
       <DependentUpon>ClientsPage.xaml</DependentUpon>
     </Compile>
@@ -141,6 +154,9 @@
     </Compile>
     <Compile Include="Pages\ProcessEdit.xaml.cs">
       <DependentUpon>ProcessEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\WorkerEdit.xaml.cs">
+      <DependentUpon>WorkerEdit.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\WorkersPage.xaml.cs">
       <DependentUpon>WorkersPage.xaml</DependentUpon>

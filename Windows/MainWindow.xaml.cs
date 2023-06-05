@@ -18,11 +18,13 @@ namespace WpfEDSS
             ButtonClients.IsEnabled = false;
             ButtonWorkers.IsEnabled = false;
             ButtonLogOut.IsEnabled = false;
+            lblAccount.IsEnabled = false;
 
             ButtonProcesses.Visibility = Visibility.Hidden;
             ButtonClients.Visibility = Visibility.Hidden;
             ButtonWorkers.Visibility = Visibility.Hidden;
             ButtonLogOut.Visibility = Visibility.Hidden;
+            lblAccount.Visibility = Visibility.Hidden;
         }
 
 

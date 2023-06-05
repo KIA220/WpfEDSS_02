@@ -22,7 +22,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Label Grid.Column="1"
-                Grid.Row="2" Content="Welcome to the help page!" HorizontalAlignment="Center" FontSize="28" Foreground="Black" VerticalAlignment="Center"/>
+                Grid.Row="2" x:Name="HelpLabel" HorizontalAlignment="Center" FontSize="28" Foreground="Black" VerticalAlignment="Center"/>
         <Button Grid.Column="1"
                 Grid.Row="4"
                 x:Name="BtnHelpBack"

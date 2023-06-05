@@ -1,4 +1,4 @@
-﻿<Page x:Class="WpfEDSS.Pages.ProcessEdit"
+﻿<Page x:Class="WpfEDSS.Pages.ClientEdit"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:WpfEDSS.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="900" d:DesignWidth="1920"
-      Title="ProcessEdit">
+      Title="ClientEdit">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -22,59 +22,32 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        
-        <TextBlock Text="Название процесса"
+
+        <TextBlock Text="ID клиента"
                    Grid.Column="0"
                    Grid.Row="0"
                    FontSize="28"/>
-        <TextBox x:Name="idTextBox"
+        <TextBox x:Name="idClientIdBox"
                  Grid.Column="1"
                  Grid.Row="0"
                  FontSize="28"/>
-        
-        <TextBlock Text="Комментарий"
+
+        <TextBlock Text="ФИО клиента"
                    Grid.Column="0"
                    Grid.Row="1"
                    FontSize="28"/>
-        <TextBox x:Name="idCommentTextBox"
+        <TextBox x:Name="ClientFIOBox"
                  Grid.Column="1"
                  Grid.Row="1"
                  FontSize="28"/>
-
-        <TextBlock Text="QR-Код"
-                   Grid.Column="0"
-                   Grid.Row="2"
-                   FontSize="28"/>
-        <TextBox x:Name="idQrCodeTextBox"
-                 Grid.Column="1"
-                 Grid.Row="2"
-                 FontSize="28"/>
-
-        <TextBlock Text="Сотрудник"
+        
+        <TextBlock Text="Телефон"
                    Grid.Column="0"
                    Grid.Row="3"
                    FontSize="28"/>
-        <TextBox x:Name="idUserTextBox"
+        <TextBox x:Name="idTelBox"
                  Grid.Column="1"
                  Grid.Row="3"
-                 FontSize="28"/>
-
-        <TextBlock Text="Отчет"
-                   Grid.Column="0"
-                   Grid.Row="4"
-                   FontSize="28"/>
-        <TextBox x:Name="idReportTextBox"
-                 Grid.Column="1"
-                 Grid.Row="4"
-                 FontSize="28"/>
-
-        <TextBlock Text="Клиент"
-                   Grid.Column="0"
-                   Grid.Row="5"
-                   FontSize="28"/>
-        <TextBox x:Name="idClientTextBox"
-                 Grid.Column="1"
-                 Grid.Row="5"
                  FontSize="28"/>
 
         <StackPanel Grid.Row="6"
@@ -82,19 +55,18 @@
                     Orientation="Horizontal"
                     HorizontalAlignment="Center"
                     >
-            <Button x:Name="BtnProcessAdd"
-                    Click="BtnProcessAdd_Click"
+            <Button x:Name="BtnClientAdd"
+                    Click="BtnClientAdd_Click"
                     Content="Добавить" FontSize="28"
                     Width="200"/>
-            <Button x:Name="BtnProcessEdit"
-                    Click="BtnProcessEdit_Click"
+            <Button x:Name="BtnClientEdit"
+                    Click="BtnClientEdit_Click"
                     Content="Обновить" FontSize="28"
                     Width="200"/>
-            <Button x:Name="BtnProcessDel"
-                    Click="BtnProcessDel_Click"
+            <Button x:Name="BtnClientDel"
+                    Click="BtnClientDel_Click"
                     Content="Удалить" FontSize="28"
                     Width="200" Cursor=""/>
         </StackPanel>
-        
     </Grid>
 </Page>

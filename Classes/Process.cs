@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,8 @@ namespace WpfEDSS.Classes
     //Класс модель процесс
     public class Process
     {
-        public int id { get; set; }
+        [Key]
+        public int id_process { get; set; }
         public int id_comment { get; set; }
         public int id_qr_code { get; set; }
         public int id_user { get; set; }
@@ -18,6 +20,11 @@ namespace WpfEDSS.Classes
 
         public Process() { }
 
+        public int Id_process
+        {
+            get { return id_process; }
+            set { id_process = value; }
+        }
         public int Id_comment
         {
             get { return id_comment; }
@@ -45,9 +52,9 @@ namespace WpfEDSS.Classes
         }
 
 
-        public Process(int id, int id_comment, int id_qr_code, int id_user, int id_report, int id_client)
+        public Process(int id_process, int id_comment, int id_qr_code, int id_user, int id_report, int id_client)
         {
-            this.id = id;
+            this.id_process = id_process;
             this.id_comment = id_comment;
             this.id_qr_code = id_qr_code;
             this.id_user = id_user;

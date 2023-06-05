@@ -29,7 +29,7 @@ namespace WpfEDSS.Pages
             InitializeComponent();
 
             // Заполняем элементы управления данными выбранного процесса
-            idTextBox.Text = selectedProcess.id.ToString();
+            idTextBox.Text = selectedProcess.id_process.ToString();
             idCommentTextBox.Text = selectedProcess.id_comment.ToString();
             idQrCodeTextBox.Text = selectedProcess.id_qr_code.ToString();
             idUserTextBox.Text = selectedProcess.id_user.ToString();
@@ -49,5 +49,9 @@ namespace WpfEDSS.Pages
 
         }
 
+        private void BtnProcessEdit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
