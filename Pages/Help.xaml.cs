@@ -11,7 +11,7 @@ namespace WpfEDSS.Pages
         public Help()
         {
             InitializeComponent();
-            HelpLabel.Content = "Данное приложения является проектом, выполненным в рамках выпускной квалификационной работы студентом БИТИ Кругловым И.А.";
+            HelpLabel.Content = "Данное приложения является проектом, выполненным в рамках выпускной квалификационной работы студентом БИТИ.";
         }
 
         private void BtnHelpBack_Click(object sender, System.Windows.RoutedEventArgs e)
