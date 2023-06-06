@@ -29,7 +29,7 @@ namespace WpfEDSS.Pages
             UIManager.Enable();
             db = new Classes.AppContext();
 
-            List<Classes.Client> Clients = db.Clients.ToList();
+            List<Client> Clients = db.Clients.ToList();
 
             listOfClients.ItemsSource = Clients;
         }
@@ -37,11 +37,31 @@ namespace WpfEDSS.Pages
         private void btnEditClient_Click(object sender, RoutedEventArgs e)
         {
             // Получаем выбранного клиента из списка клиентов
-            Classes.Client selectedClient = (sender as System.Windows.Controls.Button).DataContext as Classes.Client;
+            Client selectedClient = (sender as Button).DataContext as Client;
             // Создаем экземпляр страницы редактирования сотрудников и передаем данные выбранного сотдрудника
             ClientEdit editClientPage = new ClientEdit(selectedClient);
             // Открываем страницу редактирования процессов
             NavigationService.Navigate(editClientPage);
+        }
+
+        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            textBlockSearch.Visibility = SearchBox.Text.Length == 0 ? Visibility.Visible : Visibility.Hidden;
+            db = new Classes.AppContext();
+
+            string searchText = (sender as TextBox).Text.ToLower();
+            List<Client> filteredClients = db.Clients.Where(u => u.fio_client.ToString().ToLower().Contains(searchText)).ToList();
+
+            if (listOfClients != null) // проверка на null
+            {
+                listOfClients.ItemsSource = filteredClients;
+            }
+            if (SearchBox.Text.Length == 0)
+            {
+                db = new Classes.AppContext();
+                List<Client> Clients = db.Clients.ToList();
+                listOfClients.ItemsSource = Clients;
+            }
         }
     }
 }

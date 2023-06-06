@@ -32,10 +32,12 @@
         <Button Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Content="Войти" FontSize="28" Click="LoginButton_Click"/>
         <x:Code>
             <![CDATA[
+            
             private void OnPasswordChanged(object sender, RoutedEventArgs e) 
                 => tblPasswordHint.Visibility = passwordBox.Password.Length == 0 ? Visibility.Visible : Visibility.Hidden;
             private void OnLoginChanged(object sender, RoutedEventArgs e) 
                 => tblLoginHint.Visibility = loginTextBox.Text.Length == 0 ? Visibility.Visible : Visibility.Hidden;
+            
         ]]>
         </x:Code>
     </Grid>

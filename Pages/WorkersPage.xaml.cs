@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 using WpfEDSS.Classes;
 
 namespace WpfEDSS.Pages
@@ -38,10 +29,31 @@ namespace WpfEDSS.Pages
         {
             // Получаем выбранного сотрудника из списка сотрудников
             Classes.User selectedUser = (sender as System.Windows.Controls.Button).DataContext as Classes.User;
-            // Создаем экземпляр страницы редактирования сотрудников и передаем данные выбранного сотдрудника
+            // Создаем экземпляр страницы редактирования сотрудников и передаем данные выбранного сотрудника
             WorkerEdit editUserPage = new WorkerEdit(selectedUser);
             // Открываем страницу редактирования процессов
             NavigationService.Navigate(editUserPage);
+        }
+
+        
+
+        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            textBlockSearch.Visibility = SearchBox.Text.Length == 0 ? Visibility.Visible : Visibility.Hidden;
+            db = new Classes.AppContext();
+
+            string searchText = (sender as TextBox).Text.ToLower();
+            List<User> filteredUsers = db.Users.Where(u => u.fio_user.ToLower().Contains(searchText)).ToList();
+
+            if (listOfWorkers != null) // проверка на null
+            {
+                listOfWorkers.ItemsSource = filteredUsers;
+            }
+            if (SearchBox.Text.Length == 0) {
+                db = new Classes.AppContext();
+                List<Classes.User> Users = db.Users.ToList();
+                listOfWorkers.ItemsSource = Users;
+            }
         }
     }
 }

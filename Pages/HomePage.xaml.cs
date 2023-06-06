@@ -25,9 +25,6 @@ namespace WpfEDSS.Pages
             List<Classes.Process> Processes = db.Processes.ToList();
 
             listOfProcesses.ItemsSource = Processes;
-
-            
-            
         }
 
         private void btnEditProcess_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -38,6 +35,31 @@ namespace WpfEDSS.Pages
             ProcessEdit editProcessPage = new ProcessEdit(selectedProcess);
             // Открываем страницу редактирования процессов
             NavigationService.Navigate(editProcessPage);
+        }
+
+        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            textBlockSearch.Visibility = SearchBox.Text.Length == 0 ? System.Windows.Visibility.Visible : System.Windows.Visibility.Hidden;
+            db = new Classes.AppContext();
+
+            string searchText = (sender as System.Windows.Controls.TextBox).Text.ToLower();
+            List<Classes.Process> filteredProcesss = db.Processes.Where(u => u.id_comment.ToString().ToLower().Contains(searchText) || u.id_process.ToString().ToLower().Contains(searchText)).ToList();
+
+            if (listOfProcesses != null) // проверка на null
+            {
+                listOfProcesses.ItemsSource = filteredProcesss;
+            }
+            if (SearchBox.Text.Length == 0)
+            {
+                db = new Classes.AppContext();
+                List<Classes.Process> Processes = db.Processes.ToList();
+                listOfProcesses.ItemsSource = Processes;
+            }
+        }
+
+        private void btnProcessAddNew_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            Classes.ClassManager.frameMain.Navigate(new Pages.ProcessEdit());
         }
     }
 }

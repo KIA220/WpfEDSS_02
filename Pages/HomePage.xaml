@@ -9,9 +9,27 @@
       Title="HomePage">
 
     <Grid>
-        <StackPanel>
-        <TextBlock Text="Список процессов (id.id_comment.id_qr_code.id_user.id_report.id_client)"/>
-            <TextBox Width="600" Height="40" HorizontalAlignment="Left" Text="Поиск" FontSize="28" Foreground="Gray"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.ColumnSpan="5" Text="Список процессов (id.id_comment.id_qr_code.id_user.id_report.id_client)"/>
+        <TextBlock Margin="20 10 10 10" x:Name="textBlockSearch" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Text="Поиск" TextAlignment="Left" VerticalAlignment="Center"/>
+        <TextBox x:Name="SearchBox" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Width="600" Height="40" HorizontalAlignment="Left" Text="" FontSize="28" Background="{x:Null}" Foreground="Black" Margin="10" TextChanged="SearchBox_TextChanged"/>
+
+        <StackPanel Grid.Row="1" Grid.Column="0" Grid.RowSpan="5" Grid.ColumnSpan="5">
+            <Button Content="Добавить новый процесс" x:Name="btnProcessAddNew" Click="btnProcessAddNew_Click"/>
             <ListView x:Name="listOfProcesses" Margin="10">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -22,7 +40,7 @@
                             <TextBlock Text="{Binding id_user}"/>
                             <TextBlock Text="{Binding id_report}"/>
                             <TextBlock Text="{Binding id_client}"/>
-                            <Button Content="Редактировать" Name="btnEditProcess" Click="btnEditProcess_Click"/>
+                            <Button Content="Редактировать" Name="btnEditProcess" Click="btnEditProcess_Click" HorizontalAlignment="Right"/>
                         </WrapPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>

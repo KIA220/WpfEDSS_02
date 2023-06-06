@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 
 
 namespace WpfEDSS
@@ -46,7 +47,7 @@ namespace WpfEDSS
         private void ButtonLogOut_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Forms.Application.Restart();
-            System.Windows.Application.Current.Shutdown();
+            Environment.Exit(0);
         }
     }
 }

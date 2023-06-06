@@ -16,6 +16,19 @@ namespace WpfEDSS.Classes
 
         public AppContext(): base("DefaultConnection") { }
 
+
+        public void DeleteProcess(Process selectedProcess)
+        {
+            var existingProcess = Processes.Find(selectedProcess.id_process);
+            if (existingProcess != null)
+            {
+                Processes.Remove(existingProcess);
+                SaveChanges();
+            }
+        }
+
         
+
+
     }
 }

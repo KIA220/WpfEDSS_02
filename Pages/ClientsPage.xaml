@@ -9,9 +9,26 @@
       Title="ClientsPage">
 
     <Grid>
-        <StackPanel>
-            <TextBlock Text="Список клиентов"/>
-            <TextBox Width="600" Height="40" HorizontalAlignment="Left" Text="Поиск" FontSize="28" Foreground="Gray"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Список клиентов"/>
+        <TextBlock Margin="20 10 10 10" x:Name="textBlockSearch" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Text="Поиск" TextAlignment="Left" VerticalAlignment="Center"/>
+        <TextBox x:Name="SearchBox" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Width="600" Height="40" HorizontalAlignment="Left" Text="" FontSize="28" Background="{x:Null}" Foreground="Black" Margin="10" TextChanged="SearchBox_TextChanged"/>
+
+        <StackPanel Grid.Row="1" Grid.Column="0" Grid.RowSpan="5" Grid.ColumnSpan="5">
             <ListView x:Name="listOfClients" Margin="10">
                 <ListView.ItemTemplate>
                     <DataTemplate>

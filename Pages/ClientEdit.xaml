@@ -30,7 +30,7 @@
         <TextBox x:Name="idClientIdBox"
                  Grid.Column="1"
                  Grid.Row="0"
-                 FontSize="28"/>
+                 FontSize="28" IsReadOnly="True"/>
 
         <TextBlock Text="ФИО клиента"
                    Grid.Column="0"

@@ -23,14 +23,14 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         
-        <TextBlock Text="Название процесса"
+        <TextBlock Text="Название процесса(id)"
                    Grid.Column="0"
                    Grid.Row="0"
                    FontSize="28"/>
         <TextBox x:Name="idTextBox"
                  Grid.Column="1"
                  Grid.Row="0"
-                 FontSize="28"/>
+                 FontSize="28" IsReadOnly="True"/>
         
         <TextBlock Text="Комментарий"
                    Grid.Column="0"
