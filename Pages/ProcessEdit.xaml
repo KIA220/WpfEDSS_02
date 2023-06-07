@@ -12,6 +12,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -76,15 +77,19 @@
                  Grid.Column="1"
                  Grid.Row="5"
                  FontSize="28"/>
-
+        <Image Grid.Row="2" Grid.Column="2" Grid.RowSpan="3" x:Name="qrCodeImage"/>
         <StackPanel Grid.Row="6"
-                    Grid.ColumnSpan="2"
+                    Grid.ColumnSpan="3"
                     Orientation="Horizontal"
                     HorizontalAlignment="Center"
                     >
             <Button x:Name="BtnProcessAdd"
                     Click="BtnProcessAdd_Click"
                     Content="Добавить" FontSize="28"
+                    Width="200"/>
+            <Button x:Name="BtnQR_Generate"
+                    Click="BtnQR_Generate_Click"
+                    Content="Создать QR" FontSize="28"
                     Width="200"/>
             <Button x:Name="BtnProcessEdit"
                     Click="BtnProcessEdit_Click"

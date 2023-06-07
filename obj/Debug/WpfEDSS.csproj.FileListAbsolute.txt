@@ -85,6 +85,7 @@ C:\Users\AMD\source\repos\WpfEDSS\WpfEDSS_02\bin\Debug\WpfEDSS.pdb
 C:\Users\AMD\source\repos\WpfEDSS\WpfEDSS_02\bin\Debug\EntityFramework.dll
 C:\Users\AMD\source\repos\WpfEDSS\WpfEDSS_02\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\AMD\source\repos\WpfEDSS\WpfEDSS_02\bin\Debug\PresentationFramework.dll
+C:\Users\AMD\source\repos\WpfEDSS\WpfEDSS_02\bin\Debug\QRCoder.dll
 C:\Users\AMD\source\repos\WpfEDSS\WpfEDSS_02\bin\Debug\System.Data.SQLite.dll
 C:\Users\AMD\source\repos\WpfEDSS\WpfEDSS_02\bin\Debug\System.Data.SQLite.EF6.dll
 C:\Users\AMD\source\repos\WpfEDSS\WpfEDSS_02\bin\Debug\System.Data.SQLite.Linq.dll

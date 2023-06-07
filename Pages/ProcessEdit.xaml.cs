@@ -1,20 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using QRCoder;
+using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using WpfEDSS.Classes;
 using Process = WpfEDSS.Classes.Process;
+using System.Drawing.Imaging;
+using System.Drawing;
+using System.IO;
+using System.Windows.Media.Imaging;
 
 namespace WpfEDSS.Pages
 {
@@ -37,8 +30,25 @@ namespace WpfEDSS.Pages
             idUserTextBox.Text = selectedProcess.id_user.ToString();
             idReportTextBox.Text = selectedProcess.id_report.ToString();
             idClientTextBox.Text = selectedProcess.id_client.ToString();
-            
 
+            string id_process = idTextBox.Text;
+            string comment = idCommentTextBox.Text;
+            string qrCodeId = idQrCodeTextBox.Text;
+            string id_user = idUserTextBox.Text;
+            string id_report = idReportTextBox.Text;
+            string id_client = idClientTextBox.Text;
+
+            // Проверяем наличие файла QR-кода и отображаем его, если он существует
+            string fileName = $"QRCode{id_process}{comment}{qrCodeId}{id_user}{id_report}{id_client}.png";
+            string path = AppDomain.CurrentDomain.BaseDirectory + "/QRCodes/" + fileName;
+            if (File.Exists(path))
+            {
+                BitmapImage bmp = new BitmapImage();
+                bmp.BeginInit();
+                bmp.UriSource = new Uri(path);
+                bmp.EndInit();
+                qrCodeImage.Source = bmp;
+            }
 
         }
         public ProcessEdit()
@@ -131,6 +141,54 @@ namespace WpfEDSS.Pages
 
             // Возвращаемся на предыдущую страницу
             Classes.ClassManager.frameMain.Navigate(new Pages.HomePage());
+        }
+
+        private void BtnQR_Generate_Click(object sender, RoutedEventArgs e)
+        {
+            GenerateQRCode();
+        }
+        private void GenerateQRCode()
+        {
+            // Получаем значения из текстбоксов
+            string id_process = idTextBox.Text;
+            string comment = idCommentTextBox.Text;
+            string qrCodeId = idQrCodeTextBox.Text;
+            string id_user = idUserTextBox.Text;
+            string id_report = idReportTextBox.Text;
+            string id_client = idClientTextBox.Text;
+
+            // Формируем строку для QR-кода
+            string qrText;
+            qrText = String.Format($"ID Process:\t{id_process}\nComment:\t{comment}\nQR Code ID:\t{qrCodeId}\nID User:\t{id_user}\nID Report:\t{id_report}\nID Client:\t{id_client}");
+
+            // Создаем объект QRCodeGenerator и генерируем QR-код
+            QRCodeGenerator qrGenerator = new QRCodeGenerator();
+            QRCodeData qrCodeData = qrGenerator.CreateQrCode(qrText, QRCodeGenerator.ECCLevel.Q);
+            QRCode qrCode = new QRCode(qrCodeData);
+
+            // Создаем изображение
+            Bitmap qrImage = qrCode.GetGraphic(20);
+
+            // Формируем имя файла
+            string fileName = $"QRCode{id_process}{comment}{qrCodeId}{id_user}{id_report}{id_client}.png";
+
+            // Сохраняем изображение в файл
+            string path = AppDomain.CurrentDomain.BaseDirectory + "/QRCodes/" + fileName;
+            string dir = @"QRCodes";
+
+            if (!Directory.Exists(dir))
+            {
+                Directory.CreateDirectory(dir);
+            }
+            // Проверяем наличие файла
+            if (File.Exists(path))
+            {
+                System.Windows.MessageBox.Show("Такой файл уже существует!");
+            }
+            else {
+                qrImage.Save(path, ImageFormat.Png);
+                System.Diagnostics.Process.Start("explorer.exe", "/root," + System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "QRCodes"));
+            }
         }
     }
 }
