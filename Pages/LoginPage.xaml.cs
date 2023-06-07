@@ -22,15 +22,15 @@ namespace WpfEDSS.Pages
         }
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
+            db = new Classes.AppContext();
+
             string id_jobtitle = loginTextBox.Text.Trim();
             string fio_user = passwordBox.Password.Trim();
-
-
 
             Classes.User authUser = null;
             using (Classes.AppContext db = new Classes.AppContext())
             {
-                authUser = db.Users.Where(b => b.Id_jobtitle == id_jobtitle && b.Fio_user == fio_user).FirstOrDefault();
+                authUser = db.Users.Where(b => b.id_jobtitle == id_jobtitle && b.fio_user == fio_user).FirstOrDefault();
             }
             if (authUser != null)
             {

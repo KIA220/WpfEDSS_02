@@ -14,17 +14,7 @@ namespace WpfEDSS.Classes
 
         public User() { }
 
-        public string Id_jobtitle
-        {
-            get { return id_jobtitle; }
-            set { id_jobtitle = value; }
-        }
-        public string Fio_user
-        {
-            get { return fio_user; }
-            set { fio_user = value; }
-        }
-
+     
         public User(string id_jobtitle, string fio_user) 
         { 
             this.id_jobtitle = id_jobtitle;

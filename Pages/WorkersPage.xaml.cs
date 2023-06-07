@@ -55,5 +55,10 @@ namespace WpfEDSS.Pages
                 listOfWorkers.ItemsSource = Users;
             }
         }
+
+        private void btnUserAddNew_Click(object sender, RoutedEventArgs e)
+        {
+            Classes.ClassManager.frameMain.Navigate(new Pages.WorkerEdit());
+        }
     }
 }

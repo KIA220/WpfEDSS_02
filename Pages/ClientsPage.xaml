@@ -29,6 +29,7 @@
         <TextBox x:Name="SearchBox" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Width="600" Height="40" HorizontalAlignment="Left" Text="" FontSize="28" Background="{x:Null}" Foreground="Black" Margin="10" TextChanged="SearchBox_TextChanged"/>
 
         <StackPanel Grid.Row="1" Grid.Column="0" Grid.RowSpan="5" Grid.ColumnSpan="5">
+            <Button Content="Добавить нового клиента" x:Name="btnClientAddNew" Click="btnClientAddNew_Click"/>
             <ListView x:Name="listOfClients" Margin="10">
                 <ListView.ItemTemplate>
                     <DataTemplate>

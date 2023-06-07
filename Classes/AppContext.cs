@@ -26,8 +26,25 @@ namespace WpfEDSS.Classes
                 SaveChanges();
             }
         }
+        public void DeleteUser(User selectedUser)
+        {
+            var existingUser = Users.Find(selectedUser.id_user);
+            if (existingUser != null)
+            {
+                Users.Remove(existingUser);
+                SaveChanges();
+            }
+        }
+        public void DeleteClient(Client selectedClient)
+        {
+            var existingClient = Clients.Find(selectedClient.id_client);
+            if (existingClient != null)
+            {
+                Clients.Remove(existingClient);
+                SaveChanges();
+            }
+        }
 
-        
 
 
     }

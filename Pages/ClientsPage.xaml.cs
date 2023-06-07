@@ -63,5 +63,10 @@ namespace WpfEDSS.Pages
                 listOfClients.ItemsSource = Clients;
             }
         }
+
+        private void btnClientAddNew_Click(object sender, RoutedEventArgs e)
+        {
+            Classes.ClassManager.frameMain.Navigate(new Pages.ClientEdit());
+        }
     }
 }

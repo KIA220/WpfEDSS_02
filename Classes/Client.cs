@@ -16,21 +16,7 @@ namespace WpfEDSS.Classes
 
         public Client() { }
 
-        public int Id_client
-        {
-            get { return id_client; }
-            set { id_client = value; }
-        }
-        public string Fio_client
-        {
-            get { return fio_client; }
-            set { fio_client = value; }
-        }
-        public string Tel_client
-        {
-            get { return tel_client; }
-            set { tel_client = value; }
-        }
+        
         public Client(int id_client, string fio_client, string tel_client)
         {
             this.id_client = id_client;
