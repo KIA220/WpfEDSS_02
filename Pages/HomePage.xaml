@@ -24,7 +24,7 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.ColumnSpan="5" Text="Список процессов (id.id_comment.id_qr_code.id_user.id_report.id_client)"/>
+        <TextBlock Grid.ColumnSpan="5" Text="Список процессов"/>
         <TextBlock Margin="20 10 10 10" x:Name="textBlockSearch" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Text="Поиск" TextAlignment="Left" VerticalAlignment="Center"/>
         <TextBox x:Name="SearchBox" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Width="600" Height="40" HorizontalAlignment="Left" Text="" FontSize="28" Background="{x:Null}" Foreground="Black" Margin="10" TextChanged="SearchBox_TextChanged"/>
 

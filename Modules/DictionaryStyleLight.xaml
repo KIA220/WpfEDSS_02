@@ -2,7 +2,10 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     >
     <Style TargetType="{x:Type Window}">
-        <Setter Property="Background" Value="#F4F5F9"/>
+        <Setter Property="Background" Value="#ACADB0"/>
+    </Style>
+    <Style TargetType="{x:Type Page}">
+        <Setter Property="Background" Value="#ACADB0"/>
     </Style>
     <Style TargetType="{x:Type Label}">
         <Setter Property="FontSize" Value="28"/>
@@ -15,7 +18,7 @@
     <Style TargetType="{x:Type TextBox}">
         <Style.Resources>
             <Style TargetType="{x:Type Border}">
-                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="CornerRadius" Value="20" />
             </Style>
         </Style.Resources>
     </Style>
@@ -43,7 +46,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type PasswordBox}">
                     <Border x:Name="Border"
-                CornerRadius="10"
+                CornerRadius="20"
                 Padding="0"
                 BorderThickness="1"
                 BorderBrush="Gray">
@@ -63,15 +66,15 @@
     <Style TargetType="{x:Type Button}">
         <Setter Property="Padding" Value="2"/>
         <Setter Property="Margin" Value="2"/>
-        <Setter Property="Background" Value="#FF3C3C3C"/>
+        <Setter Property="Background" Value="#b2adb1"/>
         <Setter Property="FontSize" Value="28"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Cursor" Value="Hand"/>
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Foreground" Value="Black"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1" CornerRadius="10">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1" CornerRadius="20">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
                 </ControlTemplate>
@@ -79,7 +82,8 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="#FF515151"/>
+                <Setter Property="Background" Value="#411f3c"/>
+                <Setter Property="Foreground" Value="#b2adb1"/>
             </Trigger>
         </Style.Triggers>
     </Style>
