@@ -12,15 +12,15 @@ namespace WpfEDSS.Classes
     {
         [Key]
         public int id_process { get; set; }
-        public int id_comment { get; set; }
+        public string id_comment { get; set; }
         public int id_qr_code { get; set; }
-        public int id_user { get; set; }
+        public string id_user { get; set; }
         public int id_report { get; set; }
-        public int id_client { get; set; }
+        public string id_client { get; set; }
 
         public Process() { }
 
-        public Process(int id_process, int id_comment, int id_qr_code, int id_user, int id_report, int id_client)
+        public Process(int id_process, string id_comment, int id_qr_code, string id_user, int id_report, string id_client)
         {
             this.id_process = id_process;
             this.id_comment = id_comment;

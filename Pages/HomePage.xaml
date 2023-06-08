@@ -33,15 +33,24 @@
             <ListView x:Name="listOfProcesses" Margin="10">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <WrapPanel>
-                            <TextBlock Text="{Binding id_process}"/>
-                            <TextBlock Text="{Binding id_comment}"/>
-                            <TextBlock Text="{Binding id_qr_code}"/>
-                            <TextBlock Text="{Binding id_user}"/>
-                            <TextBlock Text="{Binding id_report}"/>
-                            <TextBlock Text="{Binding id_client}"/>
-                            <Button Content="Редактировать" Name="btnEditProcess" Click="btnEditProcess_Click" HorizontalAlignment="Right"/>
-                        </WrapPanel>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="275"/>
+                                <ColumnDefinition Width="275"/>
+                                <ColumnDefinition Width="275"/>
+                                <ColumnDefinition Width="275"/>
+                                <ColumnDefinition Width="275"/>
+                                <ColumnDefinition Width="275"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding id_process}" Grid.Column="0"/>
+                                <TextBlock Text="{Binding id_comment}" Grid.Column="1"/>
+                                <TextBlock Text="{Binding id_qr_code}" Grid.Column="2"/>
+                                <TextBlock Text="{Binding id_user}" Grid.Column="3"/>
+                                <TextBlock Text="{Binding id_report}" Grid.Column="4"/>
+                                <TextBlock Text="{Binding id_client}" Grid.Column="5"/>
+                            <Button Content="Редактировать" Name="btnEditProcess" Click="btnEditProcess_Click" Grid.Column="6" HorizontalAlignment="Right"/>
+                        </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

@@ -11,7 +11,7 @@ namespace WpfEDSS.Pages
     /// </summary>
     public partial class LoginPage : Page
     {
-        
+        readonly UIManager UIManager = new UIManager();
         Classes.AppContext db;
         public LoginPage()
         {
@@ -36,8 +36,11 @@ namespace WpfEDSS.Pages
             {
                 if (id_jobtitle == "admin") { 
                     UserSessionStats.status = 0; //become admin
+                    
+                    
                 }
-                
+                UserSessionStats.account = id_jobtitle;
+                UIManager.LabelAccountUpdate();
                 Classes.ClassManager.frameMain.Navigate(new Pages.HomePage());
             }
             else

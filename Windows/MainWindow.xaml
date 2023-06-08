@@ -15,7 +15,7 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
-            <RowDefinition Height="900"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Border CornerRadius="10"/>
         <Frame
@@ -27,7 +27,7 @@
             Grid.Row="0"
             Width="250"
             HorizontalAlignment="Left"
-            Content="Admin/Admin"
+            
             x:Name="lblAccount"
             />
         <Button

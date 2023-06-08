@@ -39,7 +39,7 @@ namespace WpfEDSS.Pages
             string id_client = idClientTextBox.Text;
 
             // Проверяем наличие файла QR-кода и отображаем его, если он существует
-            string fileName = $"QRCode{id_process}{comment}{qrCodeId}{id_user}{id_report}{id_client}.png";
+            string fileName = $"QRCode{id_process}{qrCodeId}{id_report}.png";
             string path = AppDomain.CurrentDomain.BaseDirectory + "/QRCodes/" + fileName;
             if (File.Exists(path))
             {
@@ -65,11 +65,11 @@ namespace WpfEDSS.Pages
                 Classes.Process newProcess = new Classes.Process()
                 {
 
-                    id_comment = 0,
+                    id_comment = "0",
                     id_qr_code = 0,
-                    id_user = 0,
+                    id_user = "0",
                     id_report = 0,
-                    id_client = 0,
+                    id_client = "0",
                 };
                 // Добавляем новый процесс в DbSet Processes в AppContext
                 db = new Classes.AppContext();
@@ -80,11 +80,11 @@ namespace WpfEDSS.Pages
                 Classes.Process newProcess = new Classes.Process()
                 {
 
-                    id_comment = int.Parse(idCommentTextBox.Text),
+                    id_comment = idCommentTextBox.Text,
                     id_qr_code = int.Parse(idQrCodeTextBox.Text),
-                    id_user = int.Parse(idUserTextBox.Text),
+                    id_user = idUserTextBox.Text,
                     id_report = int.Parse(idReportTextBox.Text),
-                    id_client = int.Parse(idClientTextBox.Text),
+                    id_client = idClientTextBox.Text,
                 };
                 // Добавляем новый процесс в DbSet Processes в AppContext
                 db = new Classes.AppContext();
@@ -101,11 +101,11 @@ namespace WpfEDSS.Pages
             Process process = new Process
             {
                 id_process = int.Parse(idTextBox.Text),
-                id_comment = int.Parse(idCommentTextBox.Text),
+                id_comment = idCommentTextBox.Text,
                 id_qr_code = int.Parse(idQrCodeTextBox.Text),
-                id_user = int.Parse(idUserTextBox.Text),
+                id_user = idUserTextBox.Text,
                 id_report = int.Parse(idReportTextBox.Text),
-                id_client = int.Parse(idClientTextBox.Text)
+                id_client = idClientTextBox.Text,
             };
 
             // Удаляем процесс из базы данных
@@ -128,11 +128,11 @@ namespace WpfEDSS.Pages
                 Process process = db.Processes.FirstOrDefault(p => p.id_process == processId);
 
                 // Обновляем свойства объекта Process
-                process.id_comment = int.Parse(idCommentTextBox.Text);
+                process.id_comment = idCommentTextBox.Text;
                 process.id_qr_code = int.Parse(idQrCodeTextBox.Text);
-                process.id_user = int.Parse(idUserTextBox.Text);
+                process.id_user = idUserTextBox.Text;
                 process.id_report = int.Parse(idReportTextBox.Text);
-                process.id_client = int.Parse(idClientTextBox.Text);
+                process.id_client = idClientTextBox.Text;
 
                 // Сохраняем изменения в базе данных
                 db.SaveChanges();
@@ -170,7 +170,7 @@ namespace WpfEDSS.Pages
             Bitmap qrImage = qrCode.GetGraphic(20);
 
             // Формируем имя файла
-            string fileName = $"QRCode{id_process}{comment}{qrCodeId}{id_user}{id_report}{id_client}.png";
+            string fileName = $"QRCode{id_process}{qrCodeId}{id_report}.png";
 
             // Сохраняем изображение в файл
             string path = AppDomain.CurrentDomain.BaseDirectory + "/QRCodes/" + fileName;

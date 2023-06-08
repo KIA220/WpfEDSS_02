@@ -43,7 +43,7 @@ namespace WpfEDSS.Pages
             db = new Classes.AppContext();
 
             string searchText = (sender as System.Windows.Controls.TextBox).Text.ToLower();
-            List<Classes.Process> filteredProcesss = db.Processes.Where(u => u.id_comment.ToString().ToLower().Contains(searchText) || u.id_process.ToString().ToLower().Contains(searchText)).ToList();
+            List<Classes.Process> filteredProcesss = db.Processes.Where(u => u.id_comment.ToLower().Contains(searchText) || u.id_process.ToString().ToLower().Contains(searchText)).ToList();
 
             if (listOfProcesses != null) // проверка на null
             {

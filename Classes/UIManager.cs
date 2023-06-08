@@ -40,7 +40,7 @@ namespace WpfEDSS.Classes
 
         }
         public void LabelAccountUpdate() {
-            mainWindow.lblAccount.Content = "";
+            mainWindow.lblAccount.Content = UserSessionStats.account;
         }
     }
 }
