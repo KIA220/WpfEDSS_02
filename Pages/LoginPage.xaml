@@ -30,6 +30,7 @@
         <TextBlock Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" x:Name="tblPasswordHint" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Пароль" Foreground="Black"/>
         <PasswordBox  Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" x:Name="passwordBox" FontSize="28" Background="{x:Null}" PasswordChanged="OnPasswordChanged" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <Button Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Content="Войти" FontSize="28" Click="LoginButton_Click"/>
+        <Button Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="1" Content="Войти как гость" FontSize="28" Click="Button_Click"/>
         <x:Code>
             <![CDATA[
             

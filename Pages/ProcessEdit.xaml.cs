@@ -158,12 +158,12 @@ namespace WpfEDSS.Pages
             string id_client = idClientTextBox.Text;
 
             // Формируем строку для QR-кода
-            string qrText;
-            qrText = String.Format($"ID Process:\t{id_process}\nComment:\t{comment}\nQR Code ID:\t{qrCodeId}\nID User:\t{id_user}\nID Report:\t{id_report}\nID Client:\t{id_client}");
+            
+            string qrText = $"ID Process:\t{id_process}\nComment:\t{comment}\nQR Code ID:\t{qrCodeId}\nID User:\t{id_user}\nID Report:\t{id_report}\n";
 
             // Создаем объект QRCodeGenerator и генерируем QR-код
             QRCodeGenerator qrGenerator = new QRCodeGenerator();
-            QRCodeData qrCodeData = qrGenerator.CreateQrCode(qrText, QRCodeGenerator.ECCLevel.Q);
+            var qrCodeData = new QRCodeGenerator().CreateQrCode(qrText, QRCodeGenerator.ECCLevel.Q, forceUtf8: true);
             QRCode qrCode = new QRCode(qrCodeData);
 
             // Создаем изображение

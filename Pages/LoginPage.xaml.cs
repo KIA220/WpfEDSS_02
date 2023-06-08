@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Forms;
 using WpfEDSS.Classes;
 
 namespace WpfEDSS.Pages
@@ -11,6 +12,7 @@ namespace WpfEDSS.Pages
     /// </summary>
     public partial class LoginPage : Page
     {
+        int trycount = 0;
         readonly UIManager UIManager = new UIManager();
         Classes.AppContext db;
         public LoginPage()
@@ -34,21 +36,38 @@ namespace WpfEDSS.Pages
             }
             if (authUser != null)
             {
-                if (id_jobtitle == "admin") { 
-                    UserSessionStats.status = 0; //become admin
-                    
-                    
-                }
-                UserSessionStats.account = id_jobtitle;
+                UserSessionStats.status = authUser.user_role; //become role user
+                trycount = 0;
+                UserSessionStats.account = authUser.id_jobtitle;
                 UIManager.LabelAccountUpdate();
                 Classes.ClassManager.frameMain.Navigate(new Pages.HomePage());
             }
             else
             {
-                UserSessionStats.status = 1; //deadmin
+                trycount++;
                 System.Windows.MessageBox.Show("Что-то введено не корректно!");
+                if (trycount > 5)
+                {
+                    DialogResult dialogResult = (DialogResult)System.Windows.MessageBox.Show("Количество попыток превышено. Вы хотите войти как гость?", "Войти как гость", (MessageBoxButton)MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        UserSessionStats.status = 2; //guest log in
+                        trycount = 0;
+                        Classes.ClassManager.frameMain.Navigate(new Pages.HomePage());
+                    }
+                    else if (dialogResult == DialogResult.No)
+                    {
+                        trycount = 0;
+                    }
+                }
             }
         }
-        
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            UserSessionStats.status = 2; //guest log in
+            trycount = 0;
+            Classes.ClassManager.frameMain.Navigate(new Pages.HomePage());
+        }
     }
 }

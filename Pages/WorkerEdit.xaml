@@ -58,6 +58,16 @@
                  Grid.Column="1"
                  Grid.Row="3"
                  FontSize="28"/>
+        
+        <TextBlock Text="Роль пользователя"
+                   Grid.Column="0"
+                   Grid.Row="4"
+                   FontSize="28"
+                   x:Name="txtBlkROLE"/>
+        <TextBox x:Name="tbxROLE"
+                 Grid.Column="1"
+                 Grid.Row="4"
+                 FontSize="28"/>
 
         <StackPanel Grid.Row="6"
                     Grid.ColumnSpan="2"

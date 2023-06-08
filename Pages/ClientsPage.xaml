@@ -17,7 +17,9 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
@@ -25,23 +27,58 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <TextBlock Text="Список клиентов"/>
-        <TextBlock Margin="20 10 10 10" x:Name="textBlockSearch" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Text="Поиск" TextAlignment="Left" VerticalAlignment="Center"/>
-        <TextBox x:Name="SearchBox" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Width="600" Height="40" HorizontalAlignment="Left" Text="" FontSize="28" Background="{x:Null}" Foreground="Black" Margin="10" TextChanged="SearchBox_TextChanged"/>
+        <TextBlock Margin="20 10 10 10" x:Name="textBlockSearch" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Text="Поиск" TextAlignment="Left" VerticalAlignment="Bottom"/>
+        <TextBox VerticalAlignment="Bottom" x:Name="SearchBox" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Width="600" Height="40" HorizontalAlignment="Left" Text="" FontSize="28" Background="{x:Null}" Foreground="Black" Margin="10" TextChanged="SearchBox_TextChanged"/>
 
-        <StackPanel Grid.Row="1" Grid.Column="0" Grid.RowSpan="5" Grid.ColumnSpan="5">
-            <Button Content="Добавить нового клиента" x:Name="btnClientAddNew" Click="btnClientAddNew_Click"/>
-            <ListView x:Name="listOfClients" Margin="10">
+        <Button Content="Добавить нового клиента" x:Name="btnClientAddNew" Click="btnClientAddNew_Click" Grid.Row="1" Grid.ColumnSpan="5"/>
+        <Grid Grid.Row="2" Grid.ColumnSpan="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="775"/>
+                <ColumnDefinition Width="775"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="  ID"/>
+            <TextBlock Grid.Column="1" Text="  ФИО"/>
+            <TextBlock Grid.Column="2" Text="  Телефон"/>
+            <TextBlock Grid.Column="3" Text="  "/>
+        </Grid>
+        
+        <Grid Grid.Row="3" Grid.Column="0" Grid.RowSpan="5" Grid.ColumnSpan="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <ListView x:Name="listOfClients" Margin="10" Grid.Row="1">
+                <ListView.Template>
+                    <ControlTemplate TargetType="{x:Type ListView}">
+                        <Border BorderThickness="1" BorderBrush="Gray">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                                <ItemsPresenter />
+                            </ScrollViewer>
+                        </Border>
+                    </ControlTemplate>
+                </ListView.Template>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <WrapPanel>
-                            <TextBlock Text="{Binding id_client}"/>
-                            <TextBlock Text="{Binding fio_client}"/>
-                            <TextBlock Text="{Binding tel_client}"/>
-                            <Button Content="Редактировать" Name="btnEditClient" Click="btnEditClient_Click"/>
-                        </WrapPanel>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="60"/>
+                                <ColumnDefinition Width="775"/>
+                                <ColumnDefinition Width="775"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            
+                                <TextBlock Text="{Binding id_client}" Grid.Column="0"/>
+                                <TextBlock Text="{Binding fio_client}" Grid.Column="1"/>
+                                <TextBlock Text="{Binding tel_client}" Grid.Column="2"/>
+                                <Button Content="Редактировать" Name="btnEditClient" Click="btnEditClient_Click" Grid.Column="3"/>
+                           
+                        </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        </StackPanel>
+        </Grid>
     </Grid>
 </Page>

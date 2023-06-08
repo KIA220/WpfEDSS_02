@@ -10,6 +10,6 @@ namespace WpfEDSS.Classes
     {
         public static int status {  get; set; }
         public static string account { get; set; }
-        //0 - admin, 1 - regular user
+        //0 - admin, 1 - regular user, 2 - quest
     }
 }

@@ -27,12 +27,33 @@ namespace WpfEDSS.Pages
 
         private void btnEditWorker_Click(object sender, RoutedEventArgs e)
         {
-            // Получаем выбранного сотрудника из списка сотрудников
-            Classes.User selectedUser = (sender as System.Windows.Controls.Button).DataContext as Classes.User;
-            // Создаем экземпляр страницы редактирования сотрудников и передаем данные выбранного сотрудника
-            WorkerEdit editUserPage = new WorkerEdit(selectedUser);
-            // Открываем страницу редактирования процессов
-            NavigationService.Navigate(editUserPage);
+            if (Role.CheckRole() == 2)
+            {
+                System.Windows.MessageBox.Show("Гость не может этого делать!");
+            }
+            else
+            {
+                // Получаем выбранного сотрудника из списка сотрудников
+                Classes.User selectedUser = (sender as System.Windows.Controls.Button).DataContext as Classes.User;
+                if (Role.CheckRole() == 0)
+                {
+                    // Создаем экземпляр страницы редактирования сотрудников и передаем данные выбранного сотрудника
+                    WorkerEdit editUserPage = new WorkerEdit(selectedUser);
+                    // Открываем страницу редактирования процессов
+                    NavigationService.Navigate(editUserPage);
+                }
+                else if (selectedUser.id_jobtitle.ToString() == UserSessionStats.account)
+                {
+                    // Создаем экземпляр страницы редактирования сотрудников и передаем данные выбранного сотрудника
+                    WorkerEdit editUserPage = new WorkerEdit(selectedUser);
+                    // Открываем страницу редактирования процессов
+                    NavigationService.Navigate(editUserPage);
+                }
+                else
+                {
+                    System.Windows.MessageBox.Show("Допускается изменение только своего аккаунта!");
+                }
+            }
         }
 
         
@@ -58,7 +79,14 @@ namespace WpfEDSS.Pages
 
         private void btnUserAddNew_Click(object sender, RoutedEventArgs e)
         {
-            Classes.ClassManager.frameMain.Navigate(new Pages.WorkerEdit());
+            if (Role.CheckRole() == 2)
+            {
+                System.Windows.MessageBox.Show("Гость не может этого делать!");
+            }
+            else
+            {
+                Classes.ClassManager.frameMain.Navigate(new Pages.WorkerEdit());
+            }
         }
     }
 }

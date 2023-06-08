@@ -36,12 +36,19 @@ namespace WpfEDSS.Pages
 
         private void btnEditClient_Click(object sender, RoutedEventArgs e)
         {
-            // Получаем выбранного клиента из списка клиентов
-            Client selectedClient = (sender as Button).DataContext as Client;
-            // Создаем экземпляр страницы редактирования сотрудников и передаем данные выбранного сотдрудника
-            ClientEdit editClientPage = new ClientEdit(selectedClient);
-            // Открываем страницу редактирования процессов
-            NavigationService.Navigate(editClientPage);
+            if (Role.CheckRole() == 2)
+            {
+                System.Windows.MessageBox.Show("Гость не может этого делать!");
+            }
+            else
+            {
+                // Получаем выбранного клиента из списка клиентов
+                Client selectedClient = (sender as Button).DataContext as Client;
+                // Создаем экземпляр страницы редактирования сотрудников и передаем данные выбранного сотдрудника
+                ClientEdit editClientPage = new ClientEdit(selectedClient);
+                // Открываем страницу редактирования процессов
+                NavigationService.Navigate(editClientPage);
+            }
         }
 
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -66,7 +73,14 @@ namespace WpfEDSS.Pages
 
         private void btnClientAddNew_Click(object sender, RoutedEventArgs e)
         {
-            Classes.ClassManager.frameMain.Navigate(new Pages.ClientEdit());
+            if (Role.CheckRole() == 2)
+            {
+                System.Windows.MessageBox.Show("Гость не может этого делать!");
+            }
+            else
+            {
+                Classes.ClassManager.frameMain.Navigate(new Pages.ClientEdit());
+            }
         }
     }
 }

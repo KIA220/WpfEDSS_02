@@ -129,14 +129,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Classes\AppContext.cs" />
-    <Compile Include="Classes\ClassContext.cs" />
     <Compile Include="Classes\ClassManager.cs" />
     <Compile Include="Classes\Client.cs" />
-    <Compile Include="Classes\Comment.cs" />
-    <Compile Include="Classes\Jobtitle.cs" />
     <Compile Include="Classes\Process.cs" />
-    <Compile Include="Classes\QR_code.cs" />
-    <Compile Include="Classes\Report.cs" />
     <Compile Include="Classes\Role.cs" />
     <Compile Include="Classes\UIManager.cs" />
     <Compile Include="Classes\User.cs" />

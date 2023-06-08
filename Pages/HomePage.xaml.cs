@@ -29,12 +29,18 @@ namespace WpfEDSS.Pages
 
         private void btnEditProcess_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            // Получаем выбранный процесс из списка процессов
-            Classes.Process selectedProcess = (sender as System.Windows.Controls.Button).DataContext as Classes.Process;
-            // Создаем экземпляр страницы редактирования процессов и передаем данные выбранного процесса
-            ProcessEdit editProcessPage = new ProcessEdit(selectedProcess);
-            // Открываем страницу редактирования процессов
-            NavigationService.Navigate(editProcessPage);
+            if (Role.CheckRole() == 2)
+            {
+                System.Windows.MessageBox.Show("Гость не может этого делать!");
+            }
+            else {
+                // Получаем выбранный процесс из списка процессов
+                Classes.Process selectedProcess = (sender as System.Windows.Controls.Button).DataContext as Classes.Process;
+                // Создаем экземпляр страницы редактирования процессов и передаем данные выбранного процесса
+                ProcessEdit editProcessPage = new ProcessEdit(selectedProcess);
+                // Открываем страницу редактирования процессов
+                NavigationService.Navigate(editProcessPage);
+            }
         }
 
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -59,7 +65,14 @@ namespace WpfEDSS.Pages
 
         private void btnProcessAddNew_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            Classes.ClassManager.frameMain.Navigate(new Pages.ProcessEdit());
+            if (Role.CheckRole() == 2)
+            {
+                System.Windows.MessageBox.Show("Гость не может этого делать!");
+            }
+            else
+            {
+                Classes.ClassManager.frameMain.Navigate(new Pages.ProcessEdit());
+            }
         }
     }
 }
