@@ -63,6 +63,7 @@
                     Click="BtnClientEdit_Click"
                     Content="Обновить" FontSize="28"
                     Width="200"/>
+            <TextBlock Width="20"/>
             <Button x:Name="BtnClientDel"
                     Click="BtnClientDel_Click"
                     Content="Удалить" FontSize="28"

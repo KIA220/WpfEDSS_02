@@ -126,3 +126,6 @@ C:\Users\AMD\source\repos\WpfEDSS\WpfEDSS_02\obj\Debug\WpfEDSS.csproj.CoreCompil
 C:\Users\AMD\source\repos\WpfEDSS\WpfEDSS_02\obj\Debug\WpfEDSS.csproj.CopyComplete
 C:\Users\AMD\source\repos\WpfEDSS\WpfEDSS_02\obj\Debug\WpfEDSS.exe
 C:\Users\AMD\source\repos\WpfEDSS\WpfEDSS_02\obj\Debug\WpfEDSS.pdb
+C:\Users\AMD\source\repos\WpfEDSS\WpfEDSS_02\bin\Debug\Aspose.Words.dll
+C:\Users\AMD\source\repos\WpfEDSS\WpfEDSS_02\bin\Debug\Aspose.Words.Pdf2Word.dll
+C:\Users\AMD\source\repos\WpfEDSS\WpfEDSS_02\bin\Debug\Aspose.Words.xml

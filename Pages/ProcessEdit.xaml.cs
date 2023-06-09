@@ -8,6 +8,9 @@ using System.Drawing.Imaging;
 using System.Drawing;
 using System.IO;
 using System.Windows.Media.Imaging;
+using Aspose.Words;
+using Aspose.Words.Tables;
+using System.Collections;
 
 namespace WpfEDSS.Pages
 {
@@ -189,6 +192,109 @@ namespace WpfEDSS.Pages
                 qrImage.Save(path, ImageFormat.Png);
                 System.Diagnostics.Process.Start("explorer.exe", "/root," + System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "QRCodes"));
             }
+        }
+
+        private void BtnCreateReport_Click(object sender, RoutedEventArgs e)
+        {
+            // Получаем значения из текстбоксов
+            string id_process = idTextBox.Text;
+            string comment = idCommentTextBox.Text;
+            string qrCodeId = idQrCodeTextBox.Text;
+            string id_user = idUserTextBox.Text;
+            string id_report = idReportTextBox.Text;
+            string id_client = idClientTextBox.Text;
+
+
+            string fileName = $"QRCode{id_process}{qrCodeId}{id_report}.png";
+            // Сохраняем изображение в файл
+            string path = AppDomain.CurrentDomain.BaseDirectory + "/QRCodes/" + fileName;
+            if (File.Exists(path))
+            {
+                Document doc = new Document();
+                DocumentBuilder builder = new DocumentBuilder(doc);
+
+                // Укажите форматирование шрифта
+                Aspose.Words.Font font = builder.Font;
+                font.Size = 32;
+                font.Bold = true;
+                font.Color = System.Drawing.Color.Black;
+                font.Name = "Arial";
+                font.Underline = Underline.None;
+
+                // Вставить текст
+                builder.Writeln("Отчет по результатам работы.");
+                builder.Writeln();
+
+                // Изменить форматирование следующих элементов.
+                font.Underline = Underline.None;
+                font.Size = 28;
+
+                builder.Writeln("Таблица результатов");
+                // Вставить таблицу
+                Table table = builder.StartTable();
+                // Вставить ячейку
+                builder.InsertCell();
+                // Используйте фиксированную ширину столбцов.
+                table.AutoFit(AutoFitBehavior.AutoFitToContents);
+                builder.CellFormat.VerticalAlignment = CellVerticalAlignment.Center;
+                builder.Write("Идентификатор работы");
+                // Вставить ячейку
+                builder.InsertCell();
+                builder.Write(id_process);
+                builder.EndRow();
+                builder.InsertCell();
+                builder.Write("Работу выполнил");
+                builder.InsertCell();
+                builder.Write(id_user);
+                builder.EndRow();
+                builder.InsertCell();
+                builder.Write("Рабочий телефон организации");
+                builder.InsertCell();
+                builder.Write("12-21-82");
+                builder.EndRow();
+                builder.InsertCell();
+                builder.Write("Заказчик");
+                builder.InsertCell();
+                builder.Write(id_client);
+                builder.EndRow();
+                builder.EndTable();
+                builder.Writeln();
+
+                // Вставить изображение
+                builder.InsertImage(path);
+                // Вставить разрыв страницы 
+                builder.InsertBreak(BreakType.PageBreak);
+                // все элементы после разрыва страницы будут вставлены на следующую страницу.
+
+                // Сохраните документ
+                doc.Save($"Отчет {id_process}{qrCodeId}{id_report}.docx");
+
+                // Loop through all section in document
+                foreach (Section section in doc.Sections)
+                {
+                    ArrayList hfList = new ArrayList();
+                    // Loop through HeaderFooter nodes
+                    foreach (HeaderFooter hf in section.HeadersFooters)
+                    {
+                        // Remove Primary footer (as an example)
+                        if (hf.HeaderFooterType == HeaderFooterType.FooterPrimary)
+                            hfList.Add(hf);
+                    }
+                    // Remove headerfooters
+                    foreach (HeaderFooter hf in hfList)
+                    {
+                        hf.Remove();
+                    }
+                }
+                // Save output document
+                doc.Save($"Отчет {id_process}{qrCodeId}{id_report}.docx");
+
+            }
+            else {
+                System.Windows.MessageBox.Show("Создайте QR для создания отчета!");
+            }
+
+            
         }
     }
 }

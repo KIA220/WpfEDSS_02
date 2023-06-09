@@ -95,6 +95,11 @@
                     Click="BtnProcessEdit_Click"
                     Content="Обновить" FontSize="28"
                     Width="200"/>
+            <Button x:Name="BtnCreateReport"
+                    Click="BtnCreateReport_Click"
+                    Content="Создать отчет" FontSize="28"
+                    Width="200" Cursor=""/>
+            <TextBlock Width="20"/>
             <Button x:Name="BtnProcessDel"
                     Click="BtnProcessDel_Click"
                     Content="Удалить" FontSize="28"
